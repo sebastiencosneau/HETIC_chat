@@ -15,3 +15,8 @@ Mise en place d'une application de chat (chatbot)
 - Définir le moteur de rendu en ejs
 - Définir un dossier www comme étant le dossier client
 - Créer un fichier "__index.ejs__" dans le dossier www
+- Créer un router front
+    - Créer la route Homepage
+    - Créer la route register
+    - Créer la route login
+    - Créer la route chat
