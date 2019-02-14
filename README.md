@@ -20,3 +20,19 @@ Mise en place d'une application de chat (chatbot)
     - Créer la route register
     - Créer la route login
     - Créer la route chat
+
+## Création de l'api
+- Créer un fichier de routes pour l'api
+- Créer une route "/register"
+- Créer une route "/login"
+
+## Création des formulaires register/login
+- Le fromulaire d'inscription contient:
+    - email
+    - pseudo
+    - password (x2)
+    - cgu
+
+- Le formulaire de connexion contient:
+    - email
+    - password

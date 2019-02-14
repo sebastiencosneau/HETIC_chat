@@ -10,6 +10,7 @@ Imports
     const bodyparser = require('body-parser');    
     //const mongoConnect = require('./services/mongo.serv')
     const frontRouter = require('./routes/front.routes')
+    const apiRouter = require('./routes/api.routes');
 
 //
 
@@ -28,6 +29,7 @@ Configuration
             server.set( 'view engine', 'ejs' );
 
             server.use( '/', frontRouter );
+            server.use('/api', apiRouter);
 
 
             //Lancer le serveur
