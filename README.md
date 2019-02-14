@@ -10,3 +10,8 @@ Mise en place d'une application de chat (chatbot)
     - Créer une fonction pour le serveur (utilisation de la fonction express())
     - Configurer les composants
     - Lancer le serveur
+
+## Configuration des vues client
+- Définir le moteur de rendu en ejs
+- Définir un dossier www comme étant le dossier client
+- Créer un fichier "__index.ejs__" dans le dossier www
