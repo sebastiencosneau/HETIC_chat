@@ -1,0 +1,36 @@
+// Formulaire d'inscription
+
+<form action="#">
+
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" placeholder="Votre Email" required minlength="5">
+
+    <label for="pseudo">Pseudo</label>
+    <input type="text" name="pseudo" id="pseudo" placeholder="Votre Pseudo" required minlength="2">
+
+    <label for="password">Mot de passe</label>
+    <input type="password" name="password" id="password" placeholder="Votre mot de passe" required minlength="5">
+
+    <label for="password-secure">Répéter le mot de passe</label>
+    <input type="password" name="password-secure" id="password-secure" placeholder="Votre mot de passe" required minlength="5">
+
+    <label for="conditions">Accepter les <a href="#">CGU</a></label>
+    <input type="checkbox" name="conditions" id="conditions" required>
+
+    <button type="submit">Inscription</button>
+</form>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Capter la soumission du formulaire
+        document.querySelector('form').addEventListener('submit', (event)=> {
+            // Bloquer le comportement naturel du formulaire
+            event.preventDefault();
+
+            //console.log('submit');
+        })
+    });
+
+</script>

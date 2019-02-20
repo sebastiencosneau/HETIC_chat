@@ -5,14 +5,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>HETIC awesome chat</title>
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"> 
+        <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css"> 
+        <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
     </head>
     <body>
         <header>
             <h1>HETIC awesome chat</h1>
             <nav>
                 <a href="/">Homepage</a>
-                <a href="./register">Register</a>
-                <a href="./login">Login</a>
-                <a href="./chat">Chat</a>
+
+                <% if( connected === false ){ %>
+                    <a href="./register">Register</a>
+                    <a href="./login">Login</a>
+                <% } %>
+
+                <% if( connected ){ %>
+                    <a href="./chat">Chat</a>
+                <% } %>
             </nav>
         </header>
