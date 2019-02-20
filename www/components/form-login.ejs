@@ -1,0 +1,41 @@
+// Formulaire de connexion
+
+<form action="#">
+
+    <label for="pseudo">Email</label>
+    <input type="text" name="pseudo" id="pseudo" placeholder="Votre pseudo" required minlength="2">
+
+    <label for="password">Pseudo</label>
+    <input type="password" name="password" id="password" placeholder="Votre mot de passe" required minlength="5">
+
+    <button type="submit">Connexion</button>
+</form>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Variables
+        const pseudo = document.querySelector('#pseudo');
+        const password = document.querySelector('#password');
+
+        // Capter la soumission du click
+        document.querySelector('form').addEventListener('submit', (event)=> {
+
+            // Bloquer le comportement naturel du formulaire
+            event.preventDefault();
+
+            let formError = 0;
+
+            // Vérifier les champs du formulaire
+            if(pseudo.value.lenght < 2) formError++;
+            if(password.value.lenght < 5) formError++;
+
+            // Validation finale
+            if(formError === 0){
+                console.log('Well done');
+            };
+        })
+
+    });
+</script>

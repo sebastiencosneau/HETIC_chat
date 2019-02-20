@@ -24,12 +24,32 @@
 
     document.addEventListener('DOMContentLoaded', () => {
 
+        // Variables
+        const email = document.querySelector('#email');
+        const pseudo = document.querySelector('#pseudo');
+        const password = document.querySelector('#password');
+        const passwordSecure = document.querySelector('#password-secure');
+        const conditions = document.querySelector('#conditions');
+
         // Capter la soumission du formulaire
         document.querySelector('form').addEventListener('submit', (event)=> {
             // Bloquer le comportement naturel du formulaire
             event.preventDefault();
 
-            //console.log('submit');
+            let formError = 0;
+
+            // Vérifier les champs du formulaire
+            if(email.value.lenght < 5) formError++;
+            if(pseudo.value.lenght < 2) formError++;
+            if(password.value.lenght < 5) formError++;
+            if(password.value !== passwordSecure.value) formError++;
+            if(!conditions) formError++;
+
+            // Validation finale
+            if(formError === 0){
+                console.log('Well done');
+            };
+
         })
     });
 

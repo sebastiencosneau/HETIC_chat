@@ -28,6 +28,9 @@ Configuration
             server.use( express.static(path.join(__dirname, 'www')) );
             server.set( 'view engine', 'ejs' );
 
+            // Body Parser
+            server.use(bodyparser.urlencoded({ extended: false}))
+
             server.use( '/', frontRouter );
             server.use('/api', apiRouter);
 
