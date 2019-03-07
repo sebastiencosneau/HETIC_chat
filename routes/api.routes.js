@@ -7,6 +7,27 @@ Imports
 //
 
 /*
+Couch DB
+*/
+const NodeCouchDb = require('node-couchdb');
+    
+// node-couchdb instance with default options
+const couch = new NodeCouchDb();
+
+// node-couchdb instance talking to external service
+const couchExternal = new NodeCouchDb({
+    host: 'macDWS.local',
+    protocol: 'http',
+    port: 5984,
+    auth: {
+        user: 'admin',
+        pass: 'root'
+    }
+});
+
+console.log(couchExternal);
+
+/*
 Définition
 */
 
@@ -22,18 +43,18 @@ Définition
             req.body.pseudo != undefined && req.body.pseudo.length > 1
 
         ){
-            // Configuration des données
-            const userData = JSON.stringify(req.body);
 
-            // Enregistrer les données dans la BDD
-            fetch('http://localhost:3000/users', {
-                method: 'POST',
-                body: userData,
-                headers: {'Content-Type': 'application/json'}
-            })
-            .then( newUser => res.json({msg: 'User registrated', data: newUser}))
-            .catch( error => res.json({msg: 'User not registrated', data: error }));
+            couch.insert("hetic-user", {
+                email: req.body.email,
+                password: req.body.password,
+                pseudo: req.body.pseudo,
 
+            }).then(({data, headers, status}) => {
+                console.log(data, headers, status)
+                return res.json(data)
+            }, err => {
+                return res.json(err)
+            });
         }
         else{
             res.json({msg: 'Bad fields provided'});
@@ -45,28 +66,8 @@ Définition
             req.body.password != undefined && req.body.password.length > 4 &&
             req.body.pseudo != undefined && req.body.pseudo.length > 1
         ){
-            // Configuration des données
-            const userData = JSON.stringify(req.body);
-
-            // Enregistrer les données dans la BDD
-            fetch(`http://localhost:3000/users?pseudo=${pseudo.value}&password=${password.value}`, { // a corriger
-                method: 'GET',
-                headers: {'Content-Type': 'application/json'}
-            })
-            .then( rawData => {
-                return rawData.json();
-            })
-            .then( jsonData => {
-
-                if(jsonData.length > 0) {
-                    res.json({msg: 'User connected', data: jsonData})
-                }
-                else {
-                    res.json({msg: 'User not connected', data: null})
-                }
-            })
-            .catch( error => res.json({msg: 'Connection error', data: error }));
-
+            // TODO: add data to couchDB
+            return res.json(req.body);
         }
         else{
             res.json({msg: 'You are not register !'});
